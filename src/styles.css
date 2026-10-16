@@ -1,0 +1,127 @@
+[data-ps-lyrics-translation-active] [data-test-id='SYNC_LYRICS_LINE'] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35em;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 0 0.85rem;
+    text-align: center;
+    overflow: visible;
+}
+
+[data-ps-lyrics-translation-active] [data-test-id='SYNC_LYRICS_LINE'] > span {
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+[data-ps-lyrics-translation] > .ps-lyrics-tr {
+    display: none;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.45em;
+    width: max-content;
+    margin: 0 auto;
+    padding: 6px 14px;
+    border-radius: 24px;
+    font-size: clamp(12px, 0.82em, 15px);
+    line-height: 1.28;
+    font-weight: 450;
+    letter-spacing: 0.005em;
+    color: rgba(255, 255, 255, 0.72);
+    text-align: start;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    animation: ps-lyrics-tr-enter 0.35s ease-out both;
+}
+
+[data-ps-lyrics-translation]:is(.swiper-slide-prev, .swiper-slide-active, .swiper-slide-next) > .ps-lyrics-tr,
+[data-ps-lyrics-translation]:has(+ .swiper-slide-prev) > .ps-lyrics-tr,
+.swiper-slide-next + [data-ps-lyrics-translation] > .ps-lyrics-tr,
+[data-ps-lyrics-translation]:not(.swiper-slide) > .ps-lyrics-tr {
+    display: flex;
+}
+
+[data-ps-lyrics-translation] .ps-lyrics-tr_icon {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.1em;
+    height: 1.1em;
+    opacity: 0.9;
+}
+
+[data-ps-lyrics-translation] .ps-lyrics-tr_icon svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+}
+
+[data-ps-lyrics-translation] .ps-lyrics-tr_text {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    unicode-bidi: plaintext;
+}
+
+[data-ps-lyrics-translation] > .ps-lyrics-tr_loading {
+    min-width: 4.75rem;
+    align-items: center;
+}
+
+[data-ps-lyrics-translation] > .ps-lyrics-tr_loading .ps-lyrics-tr_text {
+    flex: 0 0 auto;
+    min-width: 2rem;
+    min-height: 1.2em;
+    text-align: center;
+    animation: ps-lyrics-tr-loading 1.15s ease-in-out infinite;
+}
+
+[data-ps-lyrics-translation][class*='SyncLyricsScroller_line_active'] > .ps-lyrics-tr:not(.ps-lyrics-tr_loading) {
+    color: #fff;
+    border: 2px solid currentColor;
+}
+
+[data-ps-lyrics-translation-active] [class*='SyncLyricsScroller_root'] {
+    overflow: visible !important;
+}
+
+[data-ps-lyrics-translation-active] [class*='SyncLyricsScroller_root'] [data-test-id='SYNC_LYRICS_LINE'][class*='SyncLyricsScroller_line_active'] {
+    transform: scale(1.05) !important;
+}
+
+@keyframes ps-lyrics-tr-enter {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ps-lyrics-tr-loading {
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-ps-lyrics-translation] > .ps-lyrics-tr,
+    [data-ps-lyrics-translation] > .ps-lyrics-tr_loading .ps-lyrics-tr_text {
+        animation: none;
+    }
+}
